@@ -1,0 +1,40 @@
+# packages in environment at /home/aquaomics/miniconda3/envs/bowtie2-samtools:
+#
+# Name                    Version                   Build  Channel
+_libgcc_mutex             0.1                        main  
+_openmp_mutex             4.5                       1_gnu  
+bowtie2                   2.3.5.1          py37he513fc3_0    bioconda
+bzip2                     1.0.8                h7b6447c_0  
+c-ares                    1.17.1               h27cfd23_0  
+ca-certificates           2021.10.26           h06a4308_2  
+certifi                   2021.10.8        py37h06a4308_2  
+curl                      7.62.0               hbc83047_0  
+htslib                    1.9                  h4da6232_3    bioconda
+ld_impl_linux-64          2.35.1               h7274673_9  
+libcurl                   7.62.0               h20c2e04_0  
+libdeflate                1.2                  h516909a_1    bioconda
+libedit                   3.1.20181209         hc058e9b_0  
+libev                     4.33                 h7f8727e_1  
+libffi                    3.2.1             hf484d3e_1007  
+libgcc                    7.2.0                h69d50b8_2  
+libgcc-ng                 9.3.0               h5101ec6_17  
+libgomp                   9.3.0               h5101ec6_17  
+libnghttp2                1.46.0               hce63b2e_0  
+libssh2                   1.9.0                h1ba5d50_1  
+libstdcxx-ng              9.3.0               hd4cf53a_17  
+ncurses                   6.1                  he6710b0_1  
+openjdk                   8.0.152              h7b6447c_3  
+openssl                   1.1.1m               h7f8727e_0  
+perl                      5.26.2               h14c3975_0  
+picard                    2.18.29                       0    bioconda
+pip                       21.2.2           py37h06a4308_0  
+python                    3.7.6                h0371630_2  
+readline                  7.0                  h7b6447c_5  
+samtools                  1.9                 h10a08f8_12    bioconda
+setuptools                58.0.4           py37h06a4308_0  
+sqlite                    3.31.1               h7b6447c_0  
+tbb                       2020.2               hff7bd54_0  
+tk                        8.6.11               h1ccaba5_0  
+wheel                     0.37.0             pyhd3eb1b0_1  
+xz                        5.2.5                h7b6447c_0  
+zlib                      1.2.11               h7f8727e_4  

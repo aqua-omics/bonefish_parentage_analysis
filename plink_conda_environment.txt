@@ -1,0 +1,8 @@
+# packages in environment at /home/aquaomics/miniconda3/envs/plink:
+#
+# Name                    Version                   Build  Channel
+_libgcc_mutex             0.1                        main  
+_openmp_mutex             4.5                       1_gnu  
+libgcc-ng                 9.3.0               h5101ec6_17  
+libgomp                   9.3.0               h5101ec6_17  
+plink                     1.90b6.21            h779adbc_1    bioconda
