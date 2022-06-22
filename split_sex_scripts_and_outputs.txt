@@ -1,0 +1,889 @@
+#Scripts are adapted from the following sources:
+#https://github.com/z0on/2bRAD_denovo/blob/master/2bRAD_README.sh
+#https://catchenlab.life.illinois.edu/stacks/manual/
+#https://zzz.bwh.harvard.edu/plink/data.shtml
+
+#Authors and Contact Info: 
+#David Bradshaw - dbradshaw2015@fau.edu, dbradshaw3366@gmail.com
+#Laura King - lpescitelli@fau.edu, lepescitelli@gmail.com
+
+
+#Download and unzip genome file from NCBI database
+#Change directories into that folder and save fasta and dictionary files as variables
+export GENOME_FASTA=GCA_019788955.1_BYU_Aglo_1.0_genomic.fna 
+export GENOME_DICT=GCA_019788955.1_BYU_Aglo_1.0_genomic.dict
+
+#indexing genome for bowtie2 mapper
+bowtie2-build $GENOME_FASTA $GENOME_FASTA
+samtools faidx $GENOME_FASTA
+java -jar /home/aquaomics/miniconda3/envs/bowtie2-samtools/share/picard-2.18.29-0/picard.jar CreateSequenceDictionary R=$GENOME_FASTA  O=$GENOME_DICT
+
+#Align sequences to genome to create SAM files
+#Go to folder with post-trimmed sequences
+conda activate bowtie2-samtools
+cd /home/aquaomics/bonefish/filtered/reads/stacks/post_stacks
+export GENOME_FASTA=/home/aquaomics/bonefish/cd-genomics/glossadonta_genome/GCA_019788955.1_BYU_Aglo_1.0_genomic.fna
+
+#Create set of scripts to run
+2bRAD_bowtie2_launch.pl '\.fq$' $GENOME_FASTA > bt2
+
+#Execute all commands written to bt2
+bash bt2
+
+15189917 reads; of these:
+  15189917 (100.00%) were unpaired; of these:
+    3179278 (20.93%) aligned 0 times
+    9202649 (60.58%) aligned exactly 1 time
+    2807990 (18.49%) aligned >1 times
+79.07% overall alignment rate
+15746674 reads; of these:
+  15746674 (100.00%) were unpaired; of these:
+    3484833 (22.13%) aligned 0 times
+    9746463 (61.90%) aligned exactly 1 time
+    2515378 (15.97%) aligned >1 times
+77.87% overall alignment rate
+15819312 reads; of these:
+  15819312 (100.00%) were unpaired; of these:
+    3531032 (22.32%) aligned 0 times
+    9685286 (61.22%) aligned exactly 1 time
+    2602994 (16.45%) aligned >1 times
+77.68% overall alignment rate
+15610262 reads; of these:
+  15610262 (100.00%) were unpaired; of these:
+    3538934 (22.67%) aligned 0 times
+    9600821 (61.50%) aligned exactly 1 time
+    2470507 (15.83%) aligned >1 times
+77.33% overall alignment rate
+16080537 reads; of these:
+  16080537 (100.00%) were unpaired; of these:
+    3680593 (22.89%) aligned 0 times
+    9887105 (61.48%) aligned exactly 1 time
+    2512839 (15.63%) aligned >1 times
+77.11% overall alignment rate
+17577709 reads; of these:
+  17577709 (100.00%) were unpaired; of these:
+    3958467 (22.52%) aligned 0 times
+    10882410 (61.91%) aligned exactly 1 time
+    2736832 (15.57%) aligned >1 times
+77.48% overall alignment rate
+15534159 reads; of these:
+  15534159 (100.00%) were unpaired; of these:
+    3210082 (20.66%) aligned 0 times
+    9404724 (60.54%) aligned exactly 1 time
+    2919353 (18.79%) aligned >1 times
+79.34% overall alignment rate
+19777886 reads; of these:
+  19777886 (100.00%) were unpaired; of these:
+    4080218 (20.63%) aligned 0 times
+    12034564 (60.85%) aligned exactly 1 time
+    3663104 (18.52%) aligned >1 times
+79.37% overall alignment rate
+20615224 reads; of these:
+  20615224 (100.00%) were unpaired; of these:
+    4555052 (22.10%) aligned 0 times
+    12767767 (61.93%) aligned exactly 1 time
+    3292405 (15.97%) aligned >1 times
+77.90% overall alignment rate
+14063496 reads; of these:
+  14063496 (100.00%) were unpaired; of these:
+    2947135 (20.96%) aligned 0 times
+    8518093 (60.57%) aligned exactly 1 time
+    2598268 (18.48%) aligned >1 times
+79.04% overall alignment rate
+14522371 reads; of these:
+  14522371 (100.00%) were unpaired; of these:
+    3212058 (22.12%) aligned 0 times
+    8817714 (60.72%) aligned exactly 1 time
+    2492599 (17.16%) aligned >1 times
+77.88% overall alignment rate
+17649761 reads; of these:
+  17649761 (100.00%) were unpaired; of these:
+    3816529 (21.62%) aligned 0 times
+    10861883 (61.54%) aligned exactly 1 time
+    2971349 (16.84%) aligned >1 times
+78.38% overall alignment rate
+15228725 reads; of these:
+  15228725 (100.00%) were unpaired; of these:
+    3406146 (22.37%) aligned 0 times
+    9372157 (61.54%) aligned exactly 1 time
+    2450422 (16.09%) aligned >1 times
+77.63% overall alignment rate
+20537322 reads; of these:
+  20537322 (100.00%) were unpaired; of these:
+    4617236 (22.48%) aligned 0 times
+    12781873 (62.24%) aligned exactly 1 time
+    3138213 (15.28%) aligned >1 times
+77.52% overall alignment rate
+14270726 reads; of these:
+  14270726 (100.00%) were unpaired; of these:
+    3201261 (22.43%) aligned 0 times
+    8767564 (61.44%) aligned exactly 1 time
+    2301901 (16.13%) aligned >1 times
+77.57% overall alignment rate
+15076433 reads; of these:
+  15076433 (100.00%) were unpaired; of these:
+    3402416 (22.57%) aligned 0 times
+    9230506 (61.22%) aligned exactly 1 time
+    2443511 (16.21%) aligned >1 times
+77.43% overall alignment rate
+15703839 reads; of these:
+  15703839 (100.00%) were unpaired; of these:
+    3583518 (22.82%) aligned 0 times
+    9504133 (60.52%) aligned exactly 1 time
+    2616188 (16.66%) aligned >1 times
+77.18% overall alignment rate
+14628102 reads; of these:
+  14628102 (100.00%) were unpaired; of these:
+    3286536 (22.47%) aligned 0 times
+    8807671 (60.21%) aligned exactly 1 time
+    2533895 (17.32%) aligned >1 times
+77.53% overall alignment rate
+14647033 reads; of these:
+  14647033 (100.00%) were unpaired; of these:
+    3284040 (22.42%) aligned 0 times
+    8953414 (61.13%) aligned exactly 1 time
+    2409579 (16.45%) aligned >1 times
+77.58% overall alignment rate
+14452679 reads; of these:
+  14452679 (100.00%) were unpaired; of these:
+    3458656 (23.93%) aligned 0 times
+    8564943 (59.26%) aligned exactly 1 time
+    2429080 (16.81%) aligned >1 times
+76.07% overall alignment rate
+13836045 reads; of these:
+  13836045 (100.00%) were unpaired; of these:
+    2960743 (21.40%) aligned 0 times
+    8417024 (60.83%) aligned exactly 1 time
+    2458278 (17.77%) aligned >1 times
+78.60% overall alignment rate
+15974568 reads; of these:
+  15974568 (100.00%) were unpaired; of these:
+    3474514 (21.75%) aligned 0 times
+    9669556 (60.53%) aligned exactly 1 time
+    2830498 (17.72%) aligned >1 times
+78.25% overall alignment rate
+18457196 reads; of these:
+  18457196 (100.00%) were unpaired; of these:
+    4118230 (22.31%) aligned 0 times
+    11246835 (60.93%) aligned exactly 1 time
+    3092131 (16.75%) aligned >1 times
+77.69% overall alignment rate
+18363939 reads; of these:
+  18363939 (100.00%) were unpaired; of these:
+    4072886 (22.18%) aligned 0 times
+    11101364 (60.45%) aligned exactly 1 time
+    3189689 (17.37%) aligned >1 times
+77.82% overall alignment rate
+20307811 reads; of these:
+  20307811 (100.00%) were unpaired; of these:
+    4589758 (22.60%) aligned 0 times
+    12210424 (60.13%) aligned exactly 1 time
+    3507629 (17.27%) aligned >1 times
+77.40% overall alignment rate
+19750528 reads; of these:
+  19750528 (100.00%) were unpaired; of these:
+    4276649 (21.65%) aligned 0 times
+    12014603 (60.83%) aligned exactly 1 time
+    3459276 (17.51%) aligned >1 times
+78.35% overall alignment rate
+14728744 reads; of these:
+  14728744 (100.00%) were unpaired; of these:
+    3176347 (21.57%) aligned 0 times
+    8875847 (60.26%) aligned exactly 1 time
+    2676550 (18.17%) aligned >1 times
+78.43% overall alignment rate
+15304523 reads; of these:
+  15304523 (100.00%) were unpaired; of these:
+    3557230 (23.24%) aligned 0 times
+    9159005 (59.85%) aligned exactly 1 time
+    2588288 (16.91%) aligned >1 times
+76.76% overall alignment rate
+13912350 reads; of these:
+  13912350 (100.00%) were unpaired; of these:
+    2967649 (21.33%) aligned 0 times
+    8530563 (61.32%) aligned exactly 1 time
+    2414138 (17.35%) aligned >1 times
+78.67% overall alignment rate
+15180729 reads; of these:
+  15180729 (100.00%) were unpaired; of these:
+    3324212 (21.90%) aligned 0 times
+    9026441 (59.46%) aligned exactly 1 time
+    2830076 (18.64%) aligned >1 times
+78.10% overall alignment rate
+14566554 reads; of these:
+  14566554 (100.00%) were unpaired; of these:
+    3194429 (21.93%) aligned 0 times
+    8899619 (61.10%) aligned exactly 1 time
+    2472506 (16.97%) aligned >1 times
+78.07% overall alignment rate
+15393041 reads; of these:
+  15393041 (100.00%) were unpaired; of these:
+    3596653 (23.37%) aligned 0 times
+    9365329 (60.84%) aligned exactly 1 time
+    2431059 (15.79%) aligned >1 times
+76.63% overall alignment rate
+14619866 reads; of these:
+  14619866 (100.00%) were unpaired; of these:
+    3236525 (22.14%) aligned 0 times
+    8970118 (61.36%) aligned exactly 1 time
+    2413223 (16.51%) aligned >1 times
+77.86% overall alignment rate
+13939327 reads; of these:
+  13939327 (100.00%) were unpaired; of these:
+    3336701 (23.94%) aligned 0 times
+    8303013 (59.57%) aligned exactly 1 time
+    2299613 (16.50%) aligned >1 times
+76.06% overall alignment rate
+14169476 reads; of these:
+  14169476 (100.00%) were unpaired; of these:
+    3191260 (22.52%) aligned 0 times
+    8676247 (61.23%) aligned exactly 1 time
+    2301969 (16.25%) aligned >1 times
+77.48% overall alignment rate
+14748308 reads; of these:
+  14748308 (100.00%) were unpaired; of these:
+    3142159 (21.31%) aligned 0 times
+    9087475 (61.62%) aligned exactly 1 time
+    2518674 (17.08%) aligned >1 times
+78.69% overall alignment rate
+15284198 reads; of these:
+  15284198 (100.00%) were unpaired; of these:
+    3425414 (22.41%) aligned 0 times
+    9127474 (59.72%) aligned exactly 1 time
+    2731310 (17.87%) aligned >1 times
+77.59% overall alignment rate
+14086910 reads; of these:
+  14086910 (100.00%) were unpaired; of these:
+    3019054 (21.43%) aligned 0 times
+    8478296 (60.19%) aligned exactly 1 time
+    2589560 (18.38%) aligned >1 times
+78.57% overall alignment rate
+15424669 reads; of these:
+  15424669 (100.00%) were unpaired; of these:
+    3268491 (21.19%) aligned 0 times
+    9488145 (61.51%) aligned exactly 1 time
+    2668033 (17.30%) aligned >1 times
+78.81% overall alignment rate
+17762966 reads; of these:
+  17762966 (100.00%) were unpaired; of these:
+    3630825 (20.44%) aligned 0 times
+    10806095 (60.83%) aligned exactly 1 time
+    3326046 (18.72%) aligned >1 times
+79.56% overall alignment rate
+
+#record alignments in spreadsheet and determine the average
+#/home/aquaomics/bonefish/cd-genomics/reads/alignment_rates.ods
+#Average = 77.91%
+
+#Create a list of sam files
+ls *.bt2.sam > sams
+
+#Double check you have right number of files
+cat sams | wc -l  # Should be 40
+
+#Save genome as a variable
+export GENOME_FASTA=/home/aquaomics/bonefish/cd-genomics/glossadonta_genome/GCA_019788955.1_BYU_Aglo_1.0_genomic.fna
+
+#Create a list of commands to compress, sort, and index SAM files to BAM files
+cat sams | perl -pe 's/(\S+)\.sam/samtools import \$GENOME_FASTA $1\.sam $1\.unsorted\.bam && samtools sort -o $1\.sorted\.bam $1\.unsorted\.bam && java -Xmx5g -jar \$TACC_PICARD_DIR\/picard\.jar AddOrReplaceReadGroups INPUT=$1\.sorted\.bam OUTPUT=$1\.bam RGID=group1 RGLB=lib1 RGPL=illumina RGPU=unit1 RGSM=$1 && samtools index $1\.bam/' >s2b
+
+#Open s2b and Ctrl + H to find and replace all $TACC_PICARD_DIR/picard.jar with /home/aquaomics/miniconda3/envs/bowtie2-samtools/share/picard-2.18.29-0/picard.jar
+
+#Execute all command sin s2b files
+bash s2b
+
+#Get rid of extra files
+rm *sorted*
+
+#Check to see if have right number of files
+ls *bam | wc -l  # Should be 40
+
+#Move all bams to alternative folder
+mv *bam /home/aquaomics/bonefish/cd-genomics/bams/
+
+#rename bam files to remove ".fq.bt2" to make sample name be compatible with Stacks
+rename 's/\.bt2.\././' *.bam
+
+#Run ggstacks on bams to get SNP Genotype Call calculations
+gstacks -I /home/aquaomics/bonefish/cd-genomics/bams/ -M /home/aquaomics/bonefish/cd-genomics/scripts_summaries/popmap.txt -O /home/aquaomics/bonefish/cd-genomics/stacks_out_rerun -t 2
+
+#OUTPUT START#
+Logging to '/home/aquaomics/bonefish/cd-genomics/stacks_out_rerun/gstacks.log'.
+Locus/sample distributions will be written to '/home/aquaomics/bonefish/cd-genomics/stacks_out_rerun/gstacks.log.distribs'.
+
+Configuration for this run:
+  Input mode: reference-based
+  Population map: '/home/aquaomics/bonefish/cd-genomics/scripts_summaries/popmap.txt'
+  Input files: 40, e.g. '/home/aquaomics/bonefish/cd-genomics/bams/S1.bam'
+  Output to: '/home/aquaomics/bonefish/cd-genomics/stacks_out_rerun/'
+  Model: marukilow (var_alpha: 0.01, gt_alpha: 0.05)
+
+Reading BAM headers...
+Processing all loci...
+1K...
+2K...
+5K...
+10K...
+20K...
+50K...
+100K...
+200K...
+500K...
+done.
+
+Read 497550166 BAM records:
+  kept 377068357 primary alignments (75.8%), of which 0 reverse reads
+  skipped 92163429 primary alignments with insufficient mapping qualities (18.5%)
+  skipped 28318380 excessively soft-clipped primary alignments (5.7%)
+  skipped 0 unmapped reads (0.0%)
+
+  Per-sample stats (details in 'gstacks.log.distribs'):
+    read 12438754.2 records/sample (10602626-16060172)
+    kept 74.3%-77.2% of these
+
+Built 676527 loci comprising 377068357 forward reads and 0 matching paired-end reads; mean insert length was 0.0 (sd: nan).
+
+Genotyped 676527 loci:
+  effective per-sample coverage: mean=19.3x, stdev=2.6x, min=16.2x, max=27.4x
+  mean number of sites per locus: 26.9
+  a consistent phasing was found for 29150 of out 36870 (79.1%) diploid loci needing phasing
+
+gstacks is done.
+#OUTPUT END#
+
+##Find Male only SNPS
+
+#Make a folder to dump outputs to for initial populations run
+mkdir pop_males_R_1
+
+#Run populations 
+populations -P /home/aquaomics/bonefish/cd-genomics/stacks_out_rerun/ -M /home/aquaomics/bonefish/cd-genomics/scripts_summaries/adults_popmap_males.txt -R 1 --min-maf 0.1 --write-random-snp --structure --vcf --genepop --fstats --plink --hwe -t 2 --verbose --out-path /home/aquaomics/bonefish/cd-genomics/stacks_out_rerun/pop_males_R_1
+
+#OUTPUT START#
+Logging to '/home/aquaomics/bonefish/cd-genomics/stacks_out_rerun/pop_males_R_1/populations.log'.
+Locus/sample distributions will be written to '/home/aquaomics/bonefish/cd-genomics/stacks_out_rerun/pop_males_R_1/populations.log.distribs'.
+populations parameters selected:
+  Percent samples limit per population: 0
+  Locus Population limit: 1
+  Percent samples overall: 1
+  Minor allele frequency cutoff: 0.1
+  Maximum observed heterozygosity cutoff: 1
+  Applying Fst correction: none.
+  Pi/Fis kernel smoothing: off
+  F-stats kernel smoothing: off
+  Bootstrap resampling: off
+
+Parsing population map...
+The population map contained 9 samples, 1 population(s), 1 group(s).
+Working on 9 samples.
+Working on 1 population(s):
+    Male: S11, S13, S25, S27, S32, S33, S36, S39, S40
+Working on 1 group(s) of populations:
+    defaultgrp: Male
+
+Polymorphic sites in Structure format will be written to '/home/aquaomics/bonefish/cd-genomics/stacks_out_rerun/pop_males_R_1/populations.structure'
+SNPs and calls will be written in VCF format to '/home/aquaomics/bonefish/cd-genomics/stacks_out_rerun/pop_males_R_1/populations.snps.vcf'
+Polymorphic sites in GenePop format will be written to '/home/aquaomics/bonefish/cd-genomics/stacks_out_rerun/pop_males_R_1/populations.snps.genepop'
+Polymorphic sites in PLINK format will be written to '/home/aquaomics/bonefish/cd-genomics/stacks_out_rerun/pop_males_R_1/populations.plink.ped'
+Raw haplotypes will be written to '/home/aquaomics/bonefish/cd-genomics/stacks_out_rerun/pop_males_R_1/populations.haplotypes.tsv'
+Population-level summary statistics will be written to '/home/aquaomics/bonefish/cd-genomics/stacks_out_rerun/pop_males_R_1/populations.sumstats.tsv'
+Population-level haplotype summary statistics will be written to '/home/aquaomics/bonefish/cd-genomics/stacks_out_rerun/pop_males_R_1/populations.hapstats.tsv'
+
+Processing data in batches:
+  * load a batch of catalog loci and apply filters
+  * compute SNP- and haplotype-wise per-population statistics
+  * compute SNP- and haplotype-wise deviation from HWE
+  * compute F-statistics
+  * write the above statistics in the output files
+  * export the genotypes/haplotypes in specified format(s)
+More details in '/home/aquaomics/bonefish/cd-genomics/stacks_out_rerun/pop_males_R_1/populations.log.distribs'.
+
+Removed 271786 loci that did not pass sample/population constraints from 676527 loci.
+Kept 404741 loci, composed of 10906400 sites; 40313 of those sites were filtered, 18990 variant sites remained.
+    6631497 genomic sites, of which 4262402 were covered by multiple loci (64.3%).
+Mean genotyped sites per locus: 26.94bp (stderr 0.00).
+
+Population summary statistics (more detail in populations.sumstats_summary.tsv):
+  Male: 9 samples per locus; pi: 0.34793; all/variant/polymorphic sites: 10905199/18990/18990; private alleles: 0
+
+Number of variable sites found to be significantly out of Hardy-Weinberg equilibrium (<0.05):
+  Male: 576
+Number of loci found to be significantly out of Hardy-Weinberg equilibrium (<0.05):
+  Male: 62550
+(more detail in populations.sumstats.tsv and populations.hapstats.tsv)
+Populations is done.
+#OUTPUT END#
+
+
+
+
+#Switch into the directory that was just population with the data
+cd pop_males_R_1
+
+#Count the number of lines in the .map file to get SNPS (subtract 1 from lines to due to header)
+wc -l populations.plink.map #18990
+
+#Run plink to remove any SNPs with a 90% genotyping rate (10% missing genotypes)
+plink --file populations.plink --missing --geno 0.1 --out plink_geno_0.1 --recode --allow-extra-chr
+
+#OUTPUT START#
+PLINK v1.90b6.21 64-bit (19 Oct 2020)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2020 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to plink_geno_0.1.log.
+Options in effect:
+  --allow-extra-chr
+  --file populations.plink
+  --geno 0.1
+  --missing
+  --out plink_geno_0.1
+  --recode
+
+64314 MB RAM detected; reserving 32157 MB for main workspace.
+.ped scan complete (for binary autoconversion).
+Performing single-pass .bed write (18990 variants, 9 people).
+--file: plink_geno_0.1-temporary.bed + plink_geno_0.1-temporary.bim +
+plink_geno_0.1-temporary.fam written.
+18990 variants loaded from .bim file.
+9 people (0 males, 0 females, 9 ambiguous) loaded from .fam.
+Ambiguous sex IDs written to plink_geno_0.1.nosex .
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 9 founders and 0 nonfounders present.
+Calculating allele frequencies... done.
+--missing: Sample missing data report written to plink_geno_0.1.imiss, and
+variant-based missing data report written to plink_geno_0.1.lmiss.
+0 variants removed due to missing genotype data (--geno).
+18990 variants and 9 people pass filters and QC.
+Note: No phenotypes present.
+--recode ped to plink_geno_0.1.ped + plink_geno_0.1.map ... done.
+
+#OUTPUT END#
+
+#Count lines to see if SNPs changed
+wc -l plink_geno_0.1.map #18990
+
+#Run plink to remove any SNPs with a minimum allele frquency below 0.05
+plink --file plink_geno_0.1 --missing --maf 0.05 --out plink_geno0.1_maf_0.05 --recode --allow-extra-chr
+
+#OUTPUT START#
+PLINK v1.90b6.21 64-bit (19 Oct 2020)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2020 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to plink_geno0.1_maf_0.05.log.
+Options in effect:
+  --allow-extra-chr
+  --file plink_geno_0.1
+  --maf 0.05
+  --missing
+  --out plink_geno0.1_maf_0.05
+  --recode
+
+64314 MB RAM detected; reserving 32157 MB for main workspace.
+.ped scan complete (for binary autoconversion).
+Performing single-pass .bed write (18990 variants, 9 people).
+--file: plink_geno0.1_maf_0.05-temporary.bed +
+plink_geno0.1_maf_0.05-temporary.bim + plink_geno0.1_maf_0.05-temporary.fam
+written.
+18990 variants loaded from .bim file.
+9 people (0 males, 0 females, 9 ambiguous) loaded from .fam.
+Ambiguous sex IDs written to plink_geno0.1_maf_0.05.nosex .
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 9 founders and 0 nonfounders present.
+Calculating allele frequencies... done.
+--missing: Sample missing data report written to plink_geno0.1_maf_0.05.imiss,
+and variant-based missing data report written to plink_geno0.1_maf_0.05.lmiss.
+0 variants removed due to minor allele threshold(s)
+(--maf/--max-maf/--mac/--max-mac).
+18990 variants and 9 people pass filters and QC.
+Note: No phenotypes present.
+--recode ped to plink_geno0.1_maf_0.05.ped + plink_geno0.1_maf_0.05.map ...
+done.
+#OUTPUT END#
+
+#Count lines to see if SNPs changed
+wc -l plink_geno0.1_maf_0.05.map #18990
+
+#Remove the column with the site_locus information, replace the _ with a tab and save the list as a txt file
+#This is a Whitelist i.e. a list of SNPs to keep the next time we run populations
+cut -f 2 plink_geno0.1_maf_0.05.map | sed 's/_/\t/' > Males_SNP_whitelist.txt
+
+#Check to make sure have correct number of SNPs
+wc -l Males_SNP_whitelist.txt #18990
+
+#Go back one directory
+cd ..
+
+#Make a new directory for Whitelist guideded analysis of male and spawn samples
+mkdir WL_males_R_1
+
+#Rerun populations with a whitelist defined by variable SNPs in males but this time include all spawn samples
+populations -P /home/aquaomics/bonefish/cd-genomics/stacks_out_rerun/ -M /home/aquaomics/bonefish/cd-genomics/scripts_summaries/popmap_males_spawn.txt -W /home/aquaomics/bonefish/cd-genomics/stacks_out_rerun/pop_males_R_1/Males_SNP_whitelist.txt --structure --vcf --genepop --fstats --plink -t 2 --out WL_males_R_1
+
+#OUTPUT START#
+Logging to 'WL_males_R_1/populations.log'.
+Locus/sample distributions will be written to 'WL_males_R_1/populations.log.distribs'.
+populations parameters selected:
+  Percent samples limit per population: 0
+  Locus Population limit: 1
+  Percent samples overall: 0
+  Minor allele frequency cutoff: 0
+  Maximum observed heterozygosity cutoff: 1
+  Applying Fst correction: none.
+  Pi/Fis kernel smoothing: off
+  F-stats kernel smoothing: off
+  Bootstrap resampling: off
+
+Parsing population map...
+The population map contained 17 samples, 3 population(s), 1 group(s).
+Loaded 18990 whitelisted markers.
+Working on 17 samples.
+Working on 3 population(s):
+    Spawn_1: S1, S3, S4, S5
+    Spawn_2: S2, S6, S7, S8
+    Male: S11, S13, S25, S27, S32, S33, S36, S39, S40
+Working on 1 group(s) of populations:
+    defaultgrp: Spawn_1, Spawn_2, Male
+
+Polymorphic sites in Structure format will be written to 'WL_males_R_1/populations.structure'
+SNPs and calls will be written in VCF format to 'WL_males_R_1/populations.snps.vcf'
+Haplotypes will be written in VCF format to 'WL_males_R_1/populations.haps.vcf'
+Polymorphic sites in GenePop format will be written to 'WL_males_R_1/populations.snps.genepop'
+Warning: Genepop: The order in which samples appear was modified (as the input population map is not sorted).Polymorphic loci in GenePop format will be written to 'WL_males_R_1/populations.haps.genepop'
+Polymorphic sites in PLINK format will be written to 'WL_males_R_1/populations.plink.ped'
+Raw haplotypes will be written to 'WL_males_R_1/populations.haplotypes.tsv'
+Population-level summary statistics will be written to 'WL_males_R_1/populations.sumstats.tsv'
+Population-level haplotype summary statistics will be written to 'WL_males_R_1/populations.hapstats.tsv'
+
+Processing data in batches:
+  * load a batch of catalog loci and apply filters
+  * compute SNP- and haplotype-wise per-population statistics
+  * compute F-statistics
+  * write the above statistics in the output files
+  * export the genotypes/haplotypes in specified format(s)
+More details in 'WL_males_R_1/populations.log.distribs'.
+
+Removed 657537 loci that did not pass sample/population constraints from 676527 loci.
+Kept 18990 loci, composed of 512701 sites; 0 of those sites were filtered, 18990 variant sites remained.
+    376623 genomic sites, of which 136058 were covered by multiple loci (36.1%).
+Mean genotyped sites per locus: 27.00bp (stderr 0.00).
+
+Population summary statistics (more detail in populations.sumstats_summary.tsv):
+  Spawn_1: 3.6431 samples per locus; pi: 0.38828; all/variant/polymorphic sites: 512602/18891/14532; private alleles: 0
+  Spawn_2: 3.6587 samples per locus; pi: 0.4211; all/variant/polymorphic sites: 512585/18874/15561; private alleles: 0
+  Male: 9 samples per locus; pi: 0.34793; all/variant/polymorphic sites: 512701/18990/18990; private alleles: 1685
+
+Population pair divergence statistics (more in populations.fst_summary.tsv and populations.phistats_summary.tsv):
+  Spawn_1-Spawn_2: mean Fst: 0.065077; mean Phi_st: -0.038369; mean Fst': -0.061477; mean Dxy: 0.018982
+  Spawn_1-Male: mean Fst: 0.039251; mean Phi_st: -0.013282; mean Fst': -0.0097741; mean Dxy: 0.015879
+  Spawn_2-Male: mean Fst: 0.038545; mean Phi_st: -0.015078; mean Fst': -0.011456; mean Dxy: 0.016334
+
+Populations is done.
+#OUTPUT END#
+
+#Change directories into the newly populated folder
+cd WL_males_R_1
+
+#Use plink to create an Identity-By-State Matrix to be inputed into R
+plink --file populations.plink --cluster --matrix --allow-extra-chr
+
+#OUTPUT START#
+PLINK v1.90b6.21 64-bit (19 Oct 2020)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2020 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to plink.log.
+Options in effect:
+  --allow-extra-chr
+  --cluster
+  --file populations.plink
+  --matrix
+
+Note: --matrix flag deprecated.  Migrate to "--distance ibs flat-missing",
+"--r2 square", etc.
+64314 MB RAM detected; reserving 32157 MB for main workspace.
+.ped scan complete (for binary autoconversion).
+Performing single-pass .bed write (18990 variants, 17 people).
+--file: plink-temporary.bed + plink-temporary.bim + plink-temporary.fam
+written.
+18990 variants loaded from .bim file.
+17 people (0 males, 0 females, 17 ambiguous) loaded from .fam.
+Ambiguous sex IDs written to plink.nosex .
+Using up to 31 threads (change this with --threads).
+Before main variant filters, 17 founders and 0 nonfounders present.
+Calculating allele frequencies... done.
+Total genotyping rate is 0.956497.
+18990 variants and 17 people pass filters and QC.
+Note: No phenotypes present.
+Distance matrix calculation complete.
+IBS matrix written to plink.mibs , and IDs to plink.mibs.id .
+Clustering... done.                        
+Cluster solution written to plink.cluster1 , plink.cluster2 , and
+plink.cluster3 .
+
+#OUTPUT END#
+
+#Open the *.mibs file in spreadsheet program, split data into columns by space, and save the IBS matrix as a tab-separated file to be imported into R
+
+##Get Female only SNPs
+
+#Make a folder to dump outputs to for initial populations run
+mkdir pop_females_R_1
+
+#Run populations 
+populations -P /home/aquaomics/bonefish/cd-genomics/stacks_out_rerun/ -M /home/aquaomics/bonefish/cd-genomics/scripts_summaries/adults_popmap_females.txt -R 1 --min-maf 0.1 --write-random-snp --structure --vcf --genepop --fstats --plink --hwe -t 2 --verbose --out-path /home/aquaomics/bonefish/cd-genomics/stacks_out_rerun/pop_females_R_1
+
+#OUTPUT START#
+Logging to '/home/aquaomics/bonefish/cd-genomics/stacks_out_rerun/pop_females_R_1/populations.log'.
+Locus/sample distributions will be written to '/home/aquaomics/bonefish/cd-genomics/stacks_out_rerun/pop_females_R_1/populations.log.distribs'.
+populations parameters selected:
+  Percent samples limit per population: 0
+  Locus Population limit: 1
+  Percent samples overall: 1
+  Minor allele frequency cutoff: 0.1
+  Maximum observed heterozygosity cutoff: 1
+  Applying Fst correction: none.
+  Pi/Fis kernel smoothing: off
+  F-stats kernel smoothing: off
+  Bootstrap resampling: off
+
+Parsing population map...
+The population map contained 23 samples, 1 population(s), 1 group(s).
+Working on 23 samples.
+Working on 1 population(s):
+    Female: S10, S12, S14, S15, S16, S17, S18, S19, S20, S21, S22, S23, S24, S26, S28, S29, S30, S31, S34, S35, S37, S38, S9
+Working on 1 group(s) of populations:
+    defaultgrp: Female
+
+Polymorphic sites in Structure format will be written to '/home/aquaomics/bonefish/cd-genomics/stacks_out_rerun/pop_females_R_1/populations.structure'
+SNPs and calls will be written in VCF format to '/home/aquaomics/bonefish/cd-genomics/stacks_out_rerun/pop_females_R_1/populations.snps.vcf'
+Polymorphic sites in GenePop format will be written to '/home/aquaomics/bonefish/cd-genomics/stacks_out_rerun/pop_females_R_1/populations.snps.genepop'
+Warning: Genepop: The order in which samples appear was modified (as the input population map is not sorted).Polymorphic sites in PLINK format will be written to '/home/aquaomics/bonefish/cd-genomics/stacks_out_rerun/pop_females_R_1/populations.plink.ped'
+Raw haplotypes will be written to '/home/aquaomics/bonefish/cd-genomics/stacks_out_rerun/pop_females_R_1/populations.haplotypes.tsv'
+Population-level summary statistics will be written to '/home/aquaomics/bonefish/cd-genomics/stacks_out_rerun/pop_females_R_1/populations.sumstats.tsv'
+Population-level haplotype summary statistics will be written to '/home/aquaomics/bonefish/cd-genomics/stacks_out_rerun/pop_females_R_1/populations.hapstats.tsv'
+
+Processing data in batches:
+  * load a batch of catalog loci and apply filters
+  * compute SNP- and haplotype-wise per-population statistics
+  * compute SNP- and haplotype-wise deviation from HWE
+  * compute F-statistics
+  * write the above statistics in the output files
+  * export the genotypes/haplotypes in specified format(s)
+More details in '/home/aquaomics/bonefish/cd-genomics/stacks_out_rerun/pop_females_R_1/populations.log.distribs'.
+
+Removed 406447 loci that did not pass sample/population constraints from 676527 loci.
+Kept 270080 loci, composed of 7279671 sites; 53348 of those sites were filtered, 10041 variant sites remained.
+    5237732 genomic sites, of which 2039453 were covered by multiple loci (38.9%).
+Mean genotyped sites per locus: 26.95bp (stderr 0.00).
+
+Population summary statistics (more detail in populations.sumstats_summary.tsv):
+  Female: 23 samples per locus; pi: 0.35009; all/variant/polymorphic sites: 7279051/10041/10041; private alleles: 0
+
+Number of variable sites found to be significantly out of Hardy-Weinberg equilibrium (<0.05):
+  Female: 714
+Number of loci found to be significantly out of Hardy-Weinberg equilibrium (<0.05):
+  Female: 53946
+(more detail in populations.sumstats.tsv and populations.hapstats.tsv)
+Populations is done.
+#OUTPUT END#
+
+#Switch into the directory that was just population with the data
+cd pop_females_R_1
+
+#Count the number of lines in the .map file to get SNPS (subtract 1 from lines to due to header)
+wc -l populations.plink.map #10041
+
+#Run plink to remove any SNPs with a 90% genotyping rate (10% missing genotypes)
+plink --file populations.plink --missing --geno 0.1 --out plink_geno_0.1 --recode --allow-extra-chr
+
+#OUTPUT START#
+PLINK v1.90b6.21 64-bit (19 Oct 2020)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2020 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to plink_geno_0.1.log.
+Options in effect:
+  --allow-extra-chr
+  --file populations.plink
+  --geno 0.1
+  --missing
+  --out plink_geno_0.1
+  --recode
+
+64314 MB RAM detected; reserving 32157 MB for main workspace.
+.ped scan complete (for binary autoconversion).
+Performing single-pass .bed write (10041 variants, 23 people).
+--file: plink_geno_0.1-temporary.bed + plink_geno_0.1-temporary.bim +
+plink_geno_0.1-temporary.fam written.
+10041 variants loaded from .bim file.
+23 people (0 males, 0 females, 23 ambiguous) loaded from .fam.
+Ambiguous sex IDs written to plink_geno_0.1.nosex .
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 23 founders and 0 nonfounders present.
+Calculating allele frequencies... done.
+--missing: Sample missing data report written to plink_geno_0.1.imiss, and
+variant-based missing data report written to plink_geno_0.1.lmiss.
+0 variants removed due to missing genotype data (--geno).
+10041 variants and 23 people pass filters and QC.
+Note: No phenotypes present.
+--recode ped to plink_geno_0.1.ped + plink_geno_0.1.map ... done.
+#OUTPUT END#
+
+#Count lines to see if SNPs changed
+wc -l plink_geno_0.1.map #10041
+
+#Run plink to remove any SNPs with a minimum allele frquency below 0.05
+plink --file plink_geno_0.1 --missing --maf 0.05 --out plink_geno_0.1_maf_0.05 --recode --allow-extra-chr
+
+#OUTPUT START#
+PLINK v1.90b6.21 64-bit (19 Oct 2020)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2020 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to plink_geno_0.1_maf_0.05.log.
+Options in effect:
+  --allow-extra-chr
+  --file plink_geno_0.1
+  --maf 0.05
+  --missing
+  --out plink_geno_0.1_maf_0.05
+  --recode
+
+64314 MB RAM detected; reserving 32157 MB for main workspace.
+.ped scan complete (for binary autoconversion).
+Performing single-pass .bed write (10041 variants, 23 people).
+--file: plink_geno_0.1_maf_0.05-temporary.bed +
+plink_geno_0.1_maf_0.05-temporary.bim + plink_geno_0.1_maf_0.05-temporary.fam
+written.
+10041 variants loaded from .bim file.
+23 people (0 males, 0 females, 23 ambiguous) loaded from .fam.
+Ambiguous sex IDs written to plink_geno_0.1_maf_0.05.nosex .
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 23 founders and 0 nonfounders present.
+Calculating allele frequencies... done.
+--missing: Sample missing data report written to plink_geno_0.1_maf_0.05.imiss,
+and variant-based missing data report written to plink_geno_0.1_maf_0.05.lmiss.
+0 variants removed due to minor allele threshold(s)
+(--maf/--max-maf/--mac/--max-mac).
+10041 variants and 23 people pass filters and QC.
+Note: No phenotypes present.
+--recode ped to plink_geno_0.1_maf_0.05.ped + plink_geno_0.1_maf_0.05.map ...
+done.
+#OUTPUT END#
+
+#Count lines to see if SNPs changed
+wc -l plink_geno_0.1_maf_0.05.map #10041
+
+#Remove the column with the site_locus information, replace the _ with a tab and save the list as a txt file
+#This is a Whitelist i.e. a list of SNPs to keep the next time we run populations
+cut -f 2 plink_geno_0.1_maf_0.05.map | sed 's/_/\t/' > Females_SNP_whitelist.txt
+
+#Check to make sure have correct number of SNPs
+wc -l Females_SNP_whitelist.txt #10041
+
+#Go back one directory
+cd ..
+
+#Make a new directory for Whitelist guideded analysis of female and spawn samples
+mkdir WL_females_R_1
+
+#Rerun populations with a whitelist defined by variable SNPs in females but this time include all spawn samples
+populations -P /home/aquaomics/bonefish/cd-genomics/stacks_out_rerun/ -M /home/aquaomics/bonefish/cd-genomics/scripts_summaries/popmap_females_spawn.txt -W /home/aquaomics/bonefish/cd-genomics/stacks_out_rerun/pop_females_R_1/Females_SNP_whitelist.txt --structure --vcf --genepop --fstats --plink -t 2 --out WL_females_R_1
+
+#OUTPUT START#
+populations -P /home/aquaomics/bonefish/cd-genomics/stacks_out_rerun/ -M /home/aquaomics/bonefish/cd-genomics/scripts_summaries/popmap_females_spawn.txt -W /home/aquaomics/bonefish/cd-genomics/stacks_out_rerun/pop_females_R_1/Females_SNP_whitelist.txt --structure --vcf --genepop --fstats --plink -t 2 --out WL_females_R_1
+
+Logging to 'WL_females_R_1/populations.log'.
+Locus/sample distributions will be written to 'WL_females_R_1/populations.log.distribs'.
+populations parameters selected:
+  Percent samples limit per population: 0
+  Locus Population limit: 1
+  Percent samples overall: 0
+  Minor allele frequency cutoff: 0
+  Maximum observed heterozygosity cutoff: 1
+  Applying Fst correction: none.
+  Pi/Fis kernel smoothing: off
+  F-stats kernel smoothing: off
+  Bootstrap resampling: off
+
+Parsing population map...
+The population map contained 31 samples, 3 population(s), 1 group(s).
+Loaded 10041 whitelisted markers.
+Working on 31 samples.
+Working on 3 population(s):
+    Spawn_1: S1, S3, S4, S5
+    Spawn_2: S2, S6, S7, S8
+    Female: S10, S12, S14, S15, S16, S17, S18, S19, S20, S21, S22, S23, S24, S26, S28, S29, S30, S31, S34, S35, S37, S38, S9
+Working on 1 group(s) of populations:
+    defaultgrp: Spawn_1, Spawn_2, Female
+
+Polymorphic sites in Structure format will be written to 'WL_females_R_1/populations.structure'
+SNPs and calls will be written in VCF format to 'WL_females_R_1/populations.snps.vcf'
+Haplotypes will be written in VCF format to 'WL_females_R_1/populations.haps.vcf'
+Polymorphic sites in GenePop format will be written to 'WL_females_R_1/populations.snps.genepop'
+Warning: Genepop: The order in which samples appear was modified (as the input population map is not sorted).Polymorphic loci in GenePop format will be written to 'WL_females_R_1/populations.haps.genepop'
+Polymorphic sites in PLINK format will be written to 'WL_females_R_1/populations.plink.ped'
+Raw haplotypes will be written to 'WL_females_R_1/populations.haplotypes.tsv'
+Population-level summary statistics will be written to 'WL_females_R_1/populations.sumstats.tsv'
+Population-level haplotype summary statistics will be written to 'WL_females_R_1/populations.hapstats.tsv'
+
+Processing data in batches:
+  * load a batch of catalog loci and apply filters
+  * compute SNP- and haplotype-wise per-population statistics
+  * compute F-statistics
+  * write the above statistics in the output files
+  * export the genotypes/haplotypes in specified format(s)
+More details in 'WL_females_R_1/populations.log.distribs'.
+
+Removed 666486 loci that did not pass sample/population constraints from 676527 loci.
+Kept 10041 loci, composed of 271120 sites; 0 of those sites were filtered, 10041 variant sites remained.
+    224287 genomic sites, of which 46833 were covered by multiple loci (20.9%).
+Mean genotyped sites per locus: 27.00bp (stderr 0.00).
+
+Population summary statistics (more detail in populations.sumstats_summary.tsv):
+  Spawn_1: 3.7561 samples per locus; pi: 0.42141; all/variant/polymorphic sites: 271053/9974/8060; private alleles: 0
+  Spawn_2: 3.7147 samples per locus; pi: 0.45921; all/variant/polymorphic sites: 271040/9961/8753; private alleles: 0
+  Female: 23 samples per locus; pi: 0.35009; all/variant/polymorphic sites: 271120/10041/10041; private alleles: 604
+
+Population pair divergence statistics (more in populations.fst_summary.tsv and populations.phistats_summary.tsv):
+  Spawn_1-Spawn_2: mean Fst: 0.062793; mean Phi_st: -0.039182; mean Fst': -0.066197; mean Dxy: 0.019114
+  Spawn_1-Female: mean Fst: 0.026807; mean Phi_st: 0.019076; mean Fst': 0.0094991; mean Dxy: 0.016193
+  Spawn_2-Female: mean Fst: 0.025498; mean Phi_st: 0.013395; mean Fst': 0.0056784; mean Dxy: 0.016991
+
+Populations is done.
+
+#OUTPUT END#
+
+#Change directories into the newly populated folder
+cd WL_females_R_1
+
+#Use plink to create an Identity-By-State Matrix to be inputed into R
+plink --file populations.plink --cluster --matrix --allow-extra-chr
+
+#OUTPUT START#
+PLINK v1.90b6.21 64-bit (19 Oct 2020)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2020 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to plink.log.
+Options in effect:
+  --allow-extra-chr
+  --cluster
+  --file populations.plink
+  --matrix
+
+Note: --matrix flag deprecated.  Migrate to "--distance ibs flat-missing",
+"--r2 square", etc.
+64314 MB RAM detected; reserving 32157 MB for main workspace.
+.ped scan complete (for binary autoconversion).
+Performing single-pass .bed write (10041 variants, 31 people).
+--file: plink-temporary.bed + plink-temporary.bim + plink-temporary.fam
+written.
+10041 variants loaded from .bim file.
+31 people (0 males, 0 females, 31 ambiguous) loaded from .fam.
+Ambiguous sex IDs written to plink.nosex .
+Using up to 31 threads (change this with --threads).
+Before main variant filters, 31 founders and 0 nonfounders present.
+Calculating allele frequencies... done.
+Total genotyping rate is 0.981164.
+10041 variants and 31 people pass filters and QC.
+Note: No phenotypes present.
+Distance matrix calculation complete.
+IBS matrix written to plink.mibs , and IDs to plink.mibs.id .
+Clustering... done.                        
+Cluster solution written to plink.cluster1 , plink.cluster2 , and
+plink.cluster3 .
+#OUTPUT END#
+
+#Open the *.mibs file in spreadsheet program, split data into columns by space, and save the IBS matrix as a tab-separated file to be imported into R
+
